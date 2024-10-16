@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 2.5)
+project(Qchat)
+set(CMAKE_VERBOSE_MAKEFILE ON)
+set(CMAKE_CXX_FLAGS "$ENV{CXXFLAGS} -rdynamic -O3 -fPIC -ggdb -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-deprecated-declarations")
+
+include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/include/server)
+include_directories(${PROJECT_SOURCE_DIR}/include/server/db)
+include_directories(${PROJECT_SOURCE_DIR}/include/server/model)
+include_directories(${PROJECT_SOURCE_DIR}/include/server/redis)
+include_directories(${PROJECT_SOURCE_DIR}/OtherSource)
+link_directories(/usr/lib64/mysql)
+
+add_subdirectory(src)
+add_subdirectory(test)
+set(LIB_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lib)
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
