@@ -1,2 +1,5 @@
+message("这是一个测试 server之前")
 add_subdirectory(server)
+message("这是一个测试 server之后 client之前")
 add_subdirectory(client)
+message("这是一个测试 server之后 client之后")
