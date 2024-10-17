@@ -1,7 +1,7 @@
 #include "ChatService.h"
 #include "public.h"
 #include <muduo/base/Logging.h>
-
+#include <iostream>
 
 
 ChatService *ChatService::instance()
@@ -151,10 +151,12 @@ void ChatService::reg(const TcpConnectionPtr &conn, json &js, Timestamp time){
     User user;
     user.setName(name);
     user.setPwd(pwd);
+    std::cout<<"开始注册"<<std::endl;
     bool state = _userModel.insert(user);
     if (state)
     {
         // 注册成功
+        std::cout<<"注册成功"<<std::endl;
         json response;
         response["msgid"] = REG_MSG_ACK;
         response["errno"] = 0;

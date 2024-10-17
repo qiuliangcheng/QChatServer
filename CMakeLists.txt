@@ -13,7 +13,7 @@ include_directories(/usr/local/include)
 link_directories(/usr/lib64/mysql)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 add_subdirectory(src)
-# add_subdirectory(test)
+add_subdirectory(test)
 message("这是一个测试 最外层")
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 

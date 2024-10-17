@@ -1,5 +1,5 @@
 #!/bin/bash
-if [! -d `pwd`/build ]; then
+if [ ! -d `pwd`/build ]; then
     mkdir `pwd`/build
 fi
 
