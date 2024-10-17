@@ -1,0 +1,14 @@
+/home/qlc/QChatServer/build/CMakeFiles/edit_cache.dir
+/home/qlc/QChatServer/build/CMakeFiles/rebuild_cache.dir
+/home/qlc/QChatServer/build/src/CMakeFiles/edit_cache.dir
+/home/qlc/QChatServer/build/src/CMakeFiles/rebuild_cache.dir
+/home/qlc/QChatServer/build/src/server/CMakeFiles/ChatServer.dir
+/home/qlc/QChatServer/build/src/server/CMakeFiles/edit_cache.dir
+/home/qlc/QChatServer/build/src/server/CMakeFiles/rebuild_cache.dir
+/home/qlc/QChatServer/build/src/client/CMakeFiles/ChatClient.dir
+/home/qlc/QChatServer/build/src/client/CMakeFiles/edit_cache.dir
+/home/qlc/QChatServer/build/src/client/CMakeFiles/rebuild_cache.dir
+/home/qlc/QChatServer/build/test/CMakeFiles/test_server.dir
+/home/qlc/QChatServer/build/test/CMakeFiles/test_client.dir
+/home/qlc/QChatServer/build/test/CMakeFiles/edit_cache.dir
+/home/qlc/QChatServer/build/test/CMakeFiles/rebuild_cache.dir
