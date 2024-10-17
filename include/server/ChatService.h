@@ -60,7 +60,6 @@ private:
     OfflineMsgModel _offlineMsgModel;
     FriendModel _friendModel;
     GroupModel _groupModel;
-
     // redis操作对象
     Redis _redis;
 };

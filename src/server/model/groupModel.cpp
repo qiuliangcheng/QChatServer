@@ -29,14 +29,77 @@ void GroupModel::addGroup(int userid, int groupid, string role)
     sp->update(sql);
 
 }
-//根据userid查找有哪些组拥有他
+//根据userid所在的群组信息
 vector<Group> GroupModel::queryGroups(int userid)
 {
+    vector<Group> groupVec;
+    char sql[1024] = {0};
+    sprintf(sql, "select a.id,a.groupname,a.groupdesc from allgroup a inner join \
+         groupuser b on a.id = b.groupid where b.userid=%d",
+            userid);
+    ConnectionPool *cp = ConnectionPool::getConnectionPool();
+    Connection::ptr sp = cp->getConnection();
+    MYSQL_RES *res = sp->query(sql);
+    if (res != nullptr)
+    {
+        MYSQL_ROW row;
+        // 查出userid所有的群组信息
+        while ((row = mysql_fetch_row(res)) != nullptr)
+        {
+            Group group;
+            group.setId(atoi(row[0]));
+            group.setName(row[1]);
+            group.setDesc(row[2]);
+            groupVec.push_back(group);
+        }
+        mysql_free_result(res);
+    }
+    // 查询群组的用户信息
+    for (Group &group : groupVec)
+    {
+        sprintf(sql, "select a.id,a.name,a.state,b.grouprole from user a \
+            inner join groupuser b on b.userid = a.id where b.groupid=%d",
+                group.getId());
 
-    return vector<Group>();
+        MYSQL_RES *res = sp->query(sql);
+        if (res != nullptr)
+        {
+            MYSQL_ROW row;
+            while ((row = mysql_fetch_row(res)) != nullptr)
+            {
+                GroupUser user;
+                user.setId(atoi(row[0]));
+                user.setName(row[1]);
+                user.setState(row[2]);
+                user.setRole(row[3]);
+                group.getUsers().push_back(user);
+            }
+            mysql_free_result(res);
+        }
+    }
+    return groupVec;    
 }
 
+//根据指定的groupid查询群组用户id列表，除userid自己，主要用户群聊业务给群组其它成员群发消息
 vector<int> GroupModel::queryGroupUsers(int userid, int groupid)
 {
-    return vector<int>();
+    vector<int> idVec;
+
+    char sql[1024] = {0};
+    sprintf(sql, "select userid from groupuser where groupid = %d and userid != %d", groupid, userid);
+
+    ConnectionPool *cp = ConnectionPool::getConnectionPool();
+    Connection::ptr sp = cp->getConnection();
+
+    MYSQL_RES *res = sp->query(sql);
+    if (res != nullptr)
+    {
+        MYSQL_ROW row;
+        while ((row = mysql_fetch_row(res)) != nullptr)
+        {
+            idVec.push_back(atoi(row[0]));
+        }
+        mysql_free_result(res);
+    }
+    return idVec;
 }

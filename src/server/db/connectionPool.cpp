@@ -7,7 +7,6 @@ const int _connectionTimeout=1000;
 ConnectionPool *ConnectionPool::getConnectionPool()
 {
     static ConnectionPool pool;
-    pool.init("127.0.0.1",(unsigned short)3306,"root","123456","chat",10);
     return &pool;    
 }
 
@@ -71,6 +70,7 @@ void ConnectionPool::init(string url, unsigned short port, string User, string P
 ConnectionPool::ConnectionPool()
 {
     _connectionCnt=0;
+	init("127.0.0.1",(unsigned short)3306,"root","123456","chat",10);
 }
 
 void ConnectionPool::produceConnectionTask()

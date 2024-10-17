@@ -1,1 +1,0 @@
-/usr/bin/c++  -rdynamic -O3 -fPIC -ggdb -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -Wno-deprecated-declarations -rdynamic CMakeFiles/ChatClient.dir/main.o -o ../../../bin/ChatClient   -L/usr/lib64/mysql  -Wl,-rpath,/usr/lib64/mysql -lpthread 

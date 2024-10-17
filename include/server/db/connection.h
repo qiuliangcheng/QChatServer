@@ -3,6 +3,7 @@
 #include <mysql/mysql.h>
 #include <ctime>
 #include <string>
+#include <memory>
 using namespace std;
 class Connection
 {
